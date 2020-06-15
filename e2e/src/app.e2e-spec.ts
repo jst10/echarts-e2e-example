@@ -1,5 +1,5 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import {AppPage} from './app.po';
+import {browser, logging} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -10,7 +10,13 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('echarts-e2e-example app is running!');
+    console.log('Get title text: ');
+    page.getTitleText().then((result) => {
+      console.log('Title text is: ' + result);
+    }).catch(e => {
+      console.log('Error getting title text: ' + e);
+      throw e;
+    });
   });
 
   afterEach(async () => {
